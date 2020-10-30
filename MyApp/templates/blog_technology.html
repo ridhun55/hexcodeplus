@@ -1,0 +1,251 @@
+{% extends "base.html" %}
+
+
+{% load static %}
+
+
+{% block registration %}
+
+<style>
+p{
+text-align: justify;
+color:black;
+}
+
+li{
+text-align: left;
+color:black;
+}
+
+ol.f {
+list-style-type: decimal;
+padding-top: 4px;
+padding-left: 19px;
+padding-right: 2px;
+}
+
+li{
+padding-left: 11px;
+}
+
+.section-title p {
+font-size: 14.7px;
+}
+
+.section-title li {
+font-size: 14.7px;
+}
+</style>
+
+
+
+
+
+
+<div class="container pb-70">
+<div class="section-title mt-20 text-center">
+	<div class="row">
+	<h2 class="title line-bottom mt-0" >
+		<span class="text-theme-color-2 font-weight-700" style="color: #c3190e;">{{ data.blog_heading }}</span></h2>
+	</div>
+
+<br><br>
+
+<div class="row">	
+	<div class="col-sm-12 col-md-9 mb-sm-20 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.5s;">
+		<p class="mb-15"><label style="color:black;"><i class="fa fa-calendar mr-5 text-theme-colored"> &nbsp;{{ data.blog_date }}</i></label></p>
+
+<!-- Block 1-->
+		{% if data.sub_title_1 %}
+		<h4 align="left" class=" mt-0"><span style="color:rgb(26, 86, 156)">{{ data.sub_title_1 }}</span></h4>
+		{% endif %}
+
+		{% if data.image_1 %}
+		<img src="{{ data.image_1.url }}">
+		{% endif %}
+
+		{% if data.content_1 %}
+		<p class="mb-10">{{ data.content_1 }}</p>
+		{% endif %}
+
+
+		<ol class="f" type="1" >
+			{% if data.p1 %}<li>{{ data.p1 }}</li>{% endif %}
+			{% if data.p2 %}<li>{{ data.p2 }}</li>{% endif %}
+			{% if data.p3 %}<li>{{ data.p3 }}</li>{% endif %}
+			{% if data.p4 %}<li>{{ data.p4 }}</li>{% endif %}
+			{% if data.p5 %}<li>{{ data.p5 }}</li>{% endif %}
+			{% if data.p6 %}<li>{{ data.p6 }}</li>{% endif %}
+			{% if data.p7 %}<li>{{ data.p7 }}</li>{% endif %}
+			{% if data.p8 %}<li>{{ data.p8 }}</li>{% endif %}
+			{% if data.p9 %}<li>{{ data.p9 }}</li>{% endif %}
+			{% if data.p10 %}<li>{{ data.p10 }}</li>{% endif %}
+		</ol>
+
+<!-- Block 2-->
+		{% if data.sub_title_2 %}
+		<br>
+		<h4 align="left" class=" mt-0"><span style="color:rgb(26, 86, 156)">{{ data.sub_title_2 }}</span></h4>
+		{% endif %}
+
+		{% if data.image_2 %}
+		<img src="{{ data.image_2.url }}">
+		{% endif %}
+
+		{% if data.content_2 %}
+		<p class="mb-10">{{ data.content_2 }}</p>
+		{% endif %}
+
+
+		<ol class="f" type="1" >
+			{% if data.p11 %}<li>{{ data.p11 }}</li>{% endif %}
+			{% if data.p12 %}<li>{{ data.p12 }}</li>{% endif %}
+			{% if data.p13 %}<li>{{ data.p13 }}</li>{% endif %}
+			{% if data.p14 %}<li>{{ data.p14 }}</li>{% endif %}
+			{% if data.p15 %}<li>{{ data.p15 }}</li>{% endif %}
+			{% if data.p16 %}<li>{{ data.p16 }}</li>{% endif %}
+			{% if data.p17 %}<li>{{ data.p17 }}</li>{% endif %}
+			{% if data.p18 %}<li>{{ data.p18 }}</li>{% endif %}
+			{% if data.p19 %}<li>{{ data.p19 }}</li>{% endif %}
+			{% if data.p20 %}<li>{{ data.p20 }}</li>{% endif %}
+		</ol>
+
+
+<!-- Block 3-->
+		{% if data.sub_title_3 %}
+		<br>
+		<h4 align="left" class=" mt-0"><span style="color:rgb(26, 86, 156)">{{ data.sub_title_3 }}</span></h4>
+		{% endif %}
+
+		{% if data.image_3 %}
+		<img src="{{ data.image_3.url }}">
+		{% endif %}
+
+		{% if data.content_3 %}
+		<p class="mb-10">{{ data.content_3 }}</p>
+		{% endif %}
+
+
+		<ol class="f" type="1" >
+			{% if data.p21 %}<li>{{ data.p21 }}</li>{% endif %}
+			{% if data.p22 %}<li>{{ data.p22 }}</li>{% endif %}
+			{% if data.p23 %}<li>{{ data.p23 }}</li>{% endif %}
+			{% if data.p24 %}<li>{{ data.p24 }}</li>{% endif %}
+			{% if data.p25 %}<li>{{ data.p25 }}</li>{% endif %}
+			{% if data.p26 %}<li>{{ data.p26 }}</li>{% endif %}
+			{% if data.p27 %}<li>{{ data.p27 }}</li>{% endif %}
+			{% if data.p28 %}<li>{{ data.p28 }}</li>{% endif %}
+			{% if data.p29 %}<li>{{ data.p29 }}</li>{% endif %}
+			{% if data.p30 %}<li>{{ data.p30 }}</li>{% endif %}
+		</ol>
+
+<!-- Block 4-->
+		{% if data.sub_title_4 %}
+		<br>
+		<h4 align="left" class=" mt-0"><span style="color:rgb(26, 86, 156)">{{ data.sub_title_4 }}</span></h4>
+		{% endif %}
+
+		{% if data.image_4 %}
+		<img src="{{ data.image_4.url }}">
+		{% endif %}
+
+		{% if data.content_4 %}
+		<p class="mb-10">{{ data.content_4 }}</p>
+		{% endif %}
+
+
+		<ol class="f" type="1" >
+			{% if data.p31 %}<li>{{ data.p31 }}</li>{% endif %}
+			{% if data.p32 %}<li>{{ data.p32 }}</li>{% endif %}
+			{% if data.p33 %}<li>{{ data.p33 }}</li>{% endif %}
+			{% if data.p34 %}<li>{{ data.p34 }}</li>{% endif %}
+			{% if data.p35 %}<li>{{ data.p35 }}</li>{% endif %}
+			{% if data.p36 %}<li>{{ data.p36 }}</li>{% endif %}
+			{% if data.p37 %}<li>{{ data.p37 }}</li>{% endif %}
+			{% if data.p38 %}<li>{{ data.p38 }}</li>{% endif %}
+			{% if data.p39 %}<li>{{ data.p39 }}</li>{% endif %}
+			{% if data.p40 %}<li>{{ data.p40 }}</li>{% endif %}
+		</ol>
+
+<!-- Block 5-->
+		{% if data.sub_title_5 %}
+		<br>
+		<h4 align="left" class=" mt-0"><span style="color:rgb(26, 86, 156)">{{ data.sub_title_5 }}</span></h4>
+		{% endif %}
+
+		{% if data.image_5 %}
+		<img src="{{ data.image_5.url }}">
+		{% endif %}
+
+		{% if data.content_5 %}
+		<p class="mb-10">{{ data.content_5 }}</p>
+		{% endif %}
+
+		<ol class="f" type="1" >
+			{% if data.p41 %}<li>{{ data.p41 }}</li>{% endif %}
+			{% if data.p42 %}<li>{{ data.p42 }}</li>{% endif %}
+			{% if data.p43 %}<li>{{ data.p43 }}</li>{% endif %}
+			{% if data.p44 %}<li>{{ data.p44 }}</li>{% endif %}
+			{% if data.p45 %}<li>{{ data.p45 }}</li>{% endif %}
+			{% if data.p46 %}<li>{{ data.p46 }}</li>{% endif %}
+			{% if data.p47 %}<li>{{ data.p47 }}</li>{% endif %}
+			{% if data.p48 %}<li>{{ data.p48 }}</li>{% endif %}
+			{% if data.p49 %}<li>{{ data.p49 }}</li>{% endif %}
+			{% if data.p50 %}<li>{{ data.p50 }}</li>{% endif %}
+		</ol>
+
+	</div>
+
+	<div class="col-sm-12 col-md-3 mb-sm-20 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.5s;">
+		<h3 class="widget-title line-bottom" style="color:blue">Blog Technology</h3>
+		<div class="latest-posts">
+			{% for i in blog_technology %}
+	  		<article class="post media-post clearfix pb-0 mb-10">
+			<a href="{% url 'blog_technology' i.id %}" class="post-thumb"><img width="100px" height="auto" alt="" src="{{ i.image_1.url }}"></a>
+			<div class="post-right">
+		  		<h5 class="post-title mt-0 mb-5"><a href="{% url 'blog_technology' i.id %}">{{ i.blog_heading }}</a></h5>
+				<p class="post-date mb-0 font-12"><i class="fa fa-calendar mr-5 text-theme-colored"> {{ i.blog_date }}</i></p>
+			</div>
+			</article>
+			{% endfor %}
+<br>
+<br>
+
+
+			<h3 class="widget-title line-bottom" style="color:blue">Blog Tutorials</h3>
+			<div class="latest-posts">
+			{% for i in blog_tutorials %}
+	  		<article class="post media-post clearfix pb-0 mb-10">
+			<a href="{% url 'blog_tutorials' i.id %}" class="post-thumb"><img width="100px" height="auto" alt="" src="{{ i.image_1.url }}"></a>
+			<div class="post-right">
+		  		<h5 class="post-title mt-0 mb-5"><a href="{% url 'blog_tutorials' i.id %}">{{ i.blog_heading }}</a></h5>
+				<p class="post-date mb-0 font-12"><i class="fa fa-calendar mr-5 text-theme-colored"> {{ i.blog_date }}</i></p>
+			</div>
+			</article>
+			{% endfor %}
+				<br>
+<br>
+
+
+			<h3 class="widget-title line-bottom" style="color:blue">Blog Circuits</h3>
+			<div class="latest-posts">
+			{% for i in blog_circuits %}
+	  		<article class="post media-post clearfix pb-0 mb-10">
+			<a href="{% url 'blog_circuits' i.id %}" class="post-thumb"><img width="100px" height="auto" alt="" src="{{ i.image_1.url }}"></a>
+			<div class="post-right">
+		  		<h5 class="post-title mt-0 mb-5"><a href="{% url 'blog_circuits' i.id %}">{{ i.blog_heading }}</a></h5>
+				<p class="post-date mb-0 font-12"><i class="fa fa-calendar mr-5 text-theme-colored"> {{ i.blog_date }}</i></p>
+			</div>
+			</article>
+			{% endfor %}
+	</div>
+</div>
+
+		</div></div>
+</div>
+</div>
+
+{% endblock registration %}
+
+
+

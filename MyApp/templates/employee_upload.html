@@ -1,0 +1,215 @@
+{% extends "admin_base.html" %}
+
+{% block content %}
+{% load static %}
+
+
+<!--==========================-->
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+.inputstl {
+    padding: 9px;
+    border: solid 1px #460023;
+    outline: 0;
+    background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #FFCEE7), to(#FFFFFF));
+    background: -moz-linear-gradient(top, #FFFFFF, #FFCEE7 1px, #FFFFFF 25px);
+    box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+    -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+    -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+}
+
+
+
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btn {
+border: 1px solid #460023;
+color: #494949;
+background-color: white;
+padding: 8px 17px;
+border-radius: 9px;
+font-size: 14px;
+font-weight: bold;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+<!--===================================-->
+  .rectangle-list a{
+    position: relative;
+    display: block;
+    padding: .4em .4em .4em .8em;
+    *padding: .4em;
+    margin: .5em 0 .5em 2.5em;
+    background: #ddd;
+    color: #444;
+    text-decoration: none;
+    transition: all .3s ease-out;
+  }
+
+  .rectangle-list a:hover{
+    background: #eee;
+  }
+
+  .rectangle-list a:before{
+    content: counter(li);
+    counter-increment: li;
+    position: absolute;
+    left: -2.5em;
+    top: 50%;
+    margin-top: -1em;
+    background: #fa8072;
+    height: 2em;
+    width: 2em;
+    line-height: 2em;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .rectangle-list a:after{
+    position: absolute;
+    content: '';
+    border: .5em solid transparent;
+    left: -1em;
+    top: 50%;
+    margin-top: -.5em;
+    transition: all .3s ease-out;
+  }
+
+  .rectangle-list a:hover:after{
+    left: -.5em;
+    border-left-color: #fa8072;
+  }
+
+
+</style>
+<style>
+.div_demo {
+  background: #4C9B79;
+  height: 220px;
+  width:90%;
+  border-radius: 15px;
+}
+</style>
+
+<div class="container">
+    <form method="post" class="form-horizontal" enctype="multipart/form-data" role="form">
+    {% csrf_token %}
+
+    <div class="form-group">
+        <label for="name1" class="col-sm-2 control-label">Name <sub><span style="color:red;font-size:18px"> *</span></sub></label>
+        <div class="col-sm-4">
+            <input type="text" name="Name" class="form-control inputstl" id="name1" placeholder="Enter Employee Name">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Designation" class="col-sm-2 control-label">Designation <sub><span style="color:red;font-size:18px"> *</span></sub></label>
+        <div class="col-sm-4">
+            <input type="text" name="Designation" class="form-control inputstl" id="Designation" placeholder="Enter Designation">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Mobile" class="col-sm-2 control-label">Mobile No.</label>
+        <div class="col-sm-4">
+            <input type="text" name="Mobile" class="form-control inputstl" id="Mobile" placeholder="Enter Mobile Number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Email" class="col-sm-2 control-label">Email</label>
+        <div class="col-sm-4">
+            <input type="text" name="Email" class="form-control inputstl" id="Email" placeholder="Enter Email">
+        </div>
+    </div>
+    <div class="form-group">
+        <label  class="col-sm-2 control-label ">Photo <sub><span style="color:red;font-size:18px"> *</span></sub> </label>
+        <div class="col-sm-4 upload-btn-wrapper">
+            <button class="btn">Upload Photo</button>
+            <input type="file" name="myfile"/>
+        </div>
+    </div>
+
+
+
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-4">
+        <button type="submit" class="btn btn-lg btn-block btn-danger">Submit</button>
+    </div>
+</div>
+</form>
+</div>
+
+    <br>
+    <br>
+    <div style="border:3px; border-style:solid; border-color:#FF0000; padding: 1em 1em 1em 1em;">
+    <h2>Materials Required</h2><br>
+    <h5>Photo Example [Size]</h5>
+    <a href="{% static 'images/Photo_Example/1.jpg' %}" download="x.jpg">
+        <img src="{% static 'images/Photo_Example/1.jpg' %}" alt="Example Photo Download here">
+        <button>Example Photo Download here</button>
+    </a>
+    </div>
+
+    <br>
+    <br>
+
+
+    <style>
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+    <caption> <h2>Employee Details</h2> </caption>
+    <table id="customers">
+  <tr>
+    <th> ID </th>
+    <th> Name </th>
+    <th> Designation </th>
+    <th> Delete Profile </th>
+  </tr>
+   {% for i in data %}
+    <tr>
+    <td>{{ i.id }}</td>
+    <td style="text-transform: uppercase;">{{ i.Name }}</td>
+    <td>{{ i.Designation}}</td>
+    <td><a href="{% url 'employee_delete' i.id %}"> Delete <span style="text-transform: uppercase;">{{ i.Name }}</span> </a> </td>
+  </tr>
+    {% endfor %}
+</table>
+
+</div>
+
+{% endblock content %}

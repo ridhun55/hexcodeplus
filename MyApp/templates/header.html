@@ -1,0 +1,34 @@
+{% load static %}
+
+<header id="header" class="header">
+
+    <div class="header-nav">
+      <div class="header-nav-wrapper navbar-scrolltofixed bg-white">
+        <div class="container">
+          <nav id="menuzord-right" class="menuzord default">
+            <a class="menuzord-brand pull-left flip" href="javascript:void(0)">
+<!--              <img src="{% static 'images/logo-wide.png' %}" alt="">-->
+              <h1 class="mt-0" style="color:#1f386b"> hexcode<span class="text-theme-color-2">plus </span></h1>
+            </a>
+            <ul class="menuzord-menu">
+              <li><a href="{% url 'myadmin' %}">myadmin</a></li>
+              <li class="active"><a href="{% url 'home' %}">Home</a></li>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#service">Service</a>
+              <li><a>Blogs</a>
+                <ul class="dropdown">
+                  <li><a href="{% url 'blog_home_technology' %}">Technology</a></li>
+                  <li><a href="{% url 'blog_home_tutorials' %}">Tutorials</a></li>
+                  <li><a href="{% url 'blog_home_circuits' %}">Circuits</a></li>
+                </ul>
+              </li>
+              <li><a href="https://shop.hexcodeplus.com/">Shop</a></li>
+
+
+
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>

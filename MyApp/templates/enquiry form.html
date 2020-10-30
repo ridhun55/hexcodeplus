@@ -1,0 +1,172 @@
+{% load static %}
+<section class="divider parallax layer-overlay overlay-dark-8" data-stellar-background-ratio="0.5" data-bg-img="{% static 'images/bg/bg1.jpg' %}">
+      <div class="container pt-40 pb-60">
+        <div class="section-content">
+          <div class="row">
+            <div class="col-md-6 wow fadeInLeft mt-10 pr-30" data-wow-duration="1s" data-wow-delay="0.3s">
+              <h3 class="bg-theme-colored p-15 pl-30 mb-0 text-white">Enquiry Form</h3>
+
+                <form id="volunteer_apply_form" class="bg-light p-30 pb-15" name="job_apply_form" action="#" method="post" enctype="multipart/form-data">{% csrf_token %}
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="form_name">Name <small></small></label>
+                      <input id="form_name" name="Name" type="text" placeholder="Enter Name" required="" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="form_email">Email <small>*</small></label>
+                      <input id="form_email" name="Email" class="form-control required email" type="email" placeholder="Enter Email">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="form_name">Mobile <small></small></label>
+                      <input id="form_name" name="Mobile" type="text" placeholder="Enter Mobile No." required="" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group mb-10">
+                      <div class="styled-select">
+                          <label for="form_name">Select <small></small></label>
+                        <select name="EnquiryCategory" class="form-control" required="">
+                            <option value="">- Enquiry For -</option>
+                        <option value="Robotics">Robotics</option>
+                        <option value="Electronics Components">Electronics Components</option>
+                        <option value="Custom Product Design">Custom Product Design</option>
+                        <option value="PCB Design & Fabrication">PCB Design & Fabrication</option>
+                        <option value="Project Assistance">Project Assistance</option>
+                        <option value="Training Class">Training Class</option>
+                        <option value="Others">Others</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="form_message">Message <small>*</small></label>
+                  <textarea id="form_message" name="Message" class="form-control required" rows="2" placeholder="Enter Message"></textarea>
+                </div>
+                <div class="form-group">
+                  <input id="form_botcheck" name="form_botcheck" class="form-control" type="hidden" value="" />
+                  <button type="submit" class="btn btn-block btn-dark btn-theme-colored btn-sm mt-20 pt-10 pb-10" data-loading-text="Thank you ..Our Team Responds to you latter ">Submit</button>
+                </div>
+              </form>
+              <!-- Job Form Validation-->
+              <script type="text/javascript">
+                $("#volunteer_apply_form").validate({
+                  submitHandler: function(form) {
+                    var form_btn = $(form).find('button[type="submit"]');
+                    var form_result_div = '#form-result';
+                    $(form_result_div).remove();
+                    form_btn.before('<div id="form-result" class="alert alert-success" role="alert" style="display: none;"></div>');
+                    var form_btn_old_msg = form_btn.html();
+                    form_btn.html(form_btn.prop('disabled', true).data("loading-text"));
+                    $(form).ajaxSubmit({
+                      dataType:  'json',
+                      success: function(data) {
+                        if( data.status == 'true' ) {
+                          $(form).find('.form-control').val('');
+                        }
+                        form_btn.prop('disabled', false).html(form_btn_old_msg);
+                        $(form_result_div).html(data.message).fadeIn('slow');
+                        setTimeout(function(){ $(form_result_div).fadeOut('slow') }, 6000);
+                      }
+                    });
+                  }
+                });
+              </script>
+            </div>
+            <div class="col-md-6 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s">
+              <h3 class="text-uppercase ml-15 title line-bottom text-white">Next <span class="text-theme-color-2 font-weight-700">Events</span></h3>
+              <div class="bxslider bx-nav-top p-0 m-0">
+                <div class="col-xs-12 pr-0 col-sm-6 col-md-6 mb-20">
+                  <div class="pricing table-horizontal maxwidth400">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="thumb">
+                        <img class="img-fullwidth mb-sm-0" src="{% static 'images/about/Python Django.jpg' %}" alt="">
+                        </div>
+                      </div>
+                      <div class="col-md-6 p-10 pl-sm-50">
+                        <h4 class="mt-0 mb-5 mt-10"><a href="#" class="text-white">Pyton Django Class</a></h4>
+                        <ul class="list-inline font-16 mb-5 text-white">
+                          <li class="pr-0"><i class="fa fa-calendar mr-5"></i> June 1, 2020 |</li>
+                          <li class="pl-5"><i class="fa fa-map-marker mr-5"></i>Calicut</li>
+                        </ul>
+                        <p class="mb-0 font-13 text-white mr-5 pr-10">We start a job oriented tutorial section at calicut</p>
+                        <a class="font-16  text-white mt-20" href="#">Read More →</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 pr-0 col-sm-6 col-md-6 mb-30">
+                  <div class="pricing table-horizontal maxwidth400">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="thumb">
+                        <img class="img-fullwidth mb-sm-0" src="{% static 'images/about/Job Fair.jpg' %}" alt="">
+                        </div>
+                      </div>
+                      <div class="col-md-6 p-10 pl-sm-50">
+                        <h4 class="mt-0 mb-5 mt-10"><a href="#" class="text-white">Job Fair</a></h4>
+                        <ul class="list-inline font-16 mb-5 text-white">
+                          <li class="pr-0"><i class="fa fa-calendar mr-5"></i> June 26, 2020 |</li>
+                          <li class="pl-5"><i class="fa fa-map-marker mr-5"></i>Thiruvananthapuram</li>
+                        </ul>
+                        <p class="mb-0 font-13 text-white mr-5 pr-10">Drive for freshers in software and electronics company</p>
+                        <a class="font-16  text-white mt-20" href="#">Read More →</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<!--                <div class="col-xs-12 pr-0 col-sm-6 col-md-6 mb-30">-->
+<!--                  <div class="pricing table-horizontal maxwidth400">-->
+<!--                    <div class="row">-->
+<!--                      <div class="col-md-6">-->
+<!--                        <div class="thumb">-->
+<!--                        <img class="img-fullwidth mb-sm-0" src="{% static 'images/about/as3.jpg' %}" alt="">-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                      <div class="col-md-6 p-10 pl-sm-50">-->
+<!--                        <h4 class="mt-0 mb-5 mt-10"><a href="#" class="text-white">Upcoming Event Title</a></h4>-->
+<!--                        <ul class="list-inline font-16 mb-5 text-white">-->
+<!--                          <li class="pr-0"><i class="fa fa-calendar mr-5"></i> June 26, 2016 |</li>-->
+<!--                          <li class="pl-5"><i class="fa fa-map-marker mr-5"></i>New York</li>-->
+<!--                        </ul>-->
+<!--                        <p class="mb-0 font-13 text-white mr-5 pr-10">Lorem ipsum dolor sit amet, conse ctetur adipisicing elit. Quas eveniet.</p>-->
+<!--                        <a class="font-16  text-white mt-20" href="#">Read More →</a>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class="col-xs-12 pr-0 col-sm-6 col-md-6 mb-30">-->
+<!--                  <div class="pricing table-horizontal maxwidth400">-->
+<!--                    <div class="row">-->
+<!--                      <div class="col-md-6">-->
+<!--                        <div class="thumb">-->
+<!--                        <img class="img-fullwidth mb-sm-0" src="{% static 'images/about/as4.jpg' %}" alt="">-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                      <div class="col-md-6 p-10 pl-sm-50">-->
+<!--                        <h4 class="mt-0 mb-5 mt-10"><a href="#" class="text-white">Upcoming Event Title</a></h4>-->
+<!--                        <ul class="list-inline font-16 mb-5 text-white">-->
+<!--                          <li class="pr-0"><i class="fa fa-calendar mr-5"></i> June 26, 2016 |</li>-->
+<!--                          <li class="pl-5"><i class="fa fa-map-marker mr-5"></i>New York</li>-->
+<!--                        </ul>-->
+<!--                        <p class="mb-0 font-13 text-white mr-5 pr-10">Lorem ipsum dolor sit amet, conse ctetur adipisicing elit. Quas eveniet.</p>-->
+<!--                        <a class="font-16  text-white mt-20" href="#">Read More →</a>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>

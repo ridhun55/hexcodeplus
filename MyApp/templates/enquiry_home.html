@@ -1,0 +1,70 @@
+{% extends "admin_base.html" %}
+
+{% block content %}
+{% load static %}
+
+
+<!--==========================-->
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <br>
+    <br>
+
+
+    <style>
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;color:red;font-size:18px;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+    <caption> <h2>Enquiry Details</h2> </caption>
+    <table id="customers">
+  <tr>
+    <th> ID </th>
+    <th> Date </th>
+    <th> Name </th>
+    <th> Mobile </th>
+    <th> Email </th>
+    <th> Category </th>
+    <th> Message </th>
+    <th> Delete Profile </th>
+  </tr>
+   {% for i in data %}
+    <tr>
+    <td>{{ i.id }}</td>
+    <td>{{ i.Enquiry_Date }}</td>
+    <td style="text-transform: uppercase;">{{ i.Name }}</td>
+    <td>{{ i.Mobile}}</td>
+    <td>{{ i.Email}}</td>
+    <td>{{ i.EnquiryCategory}}</td>
+    <td>{{ i.Message}}</td>
+    <td><a href="{% url 'enquiry_delete' i.id %}"> Delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+</div>
+
+{% endblock content %}

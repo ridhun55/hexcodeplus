@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+
+{% load static %}
+
+
+
+{% block registration %}
+
+
+  <!-- Start main-content -->
+  <div class="main-content">
+    <!-- Section: Blog -->
+    <section>
+      <h2 style="padding-top:47px" class="mt-0 line-height-1 text-center text-uppercase mb-10 text-black-333">Blog <span class="text-theme-color-2"> {{ Blog_name }}</span></h2>
+
+      <div class="container">
+
+        <div class="row multi-row-clearfix">
+          <div id="blog-posts-wrapper" class="blog-posts">
+
+          {% for i in data %}
+            <div class="col-sm-6 col-md-3 col-lg-3">
+              <article class="post clearfix maxwidth600 mb-30">
+                <div class="entry-header">
+                  <div class="post-thumb thumb">
+                    {% if i.image_1 %}
+                    <a href="{% url 'blog_tutorials' i.id %}">
+                      <img src="{{ i.image_1.url }}" alt="" class="img-responsive img-fullwidth">
+                    </a>
+                    {% endif %}
+                  </div>
+                </div>
+                <div class="entry-content border-1px p-20">
+                  <h5 class="entry-title mt-0 pt-0"><a href="{% url 'blog_tutorials' i.id %}">{{ i.blog_heading }}</a></h5>
+                  <ul class="list-inline entry-date font-12 mt-5">
+                    <a href="{% url 'blog_technology' i.id %}">
+                    <li class="pl-0"><span class="text-theme-colored">{{ i.blog_date }}</span></li>
+                    </a>
+                  </ul>
+                  <a href="{% url 'blog_tutorials' i.id %}">
+                    <p class="text-left mb-20 mt-15 font-13" style="text-align:justify;">{{ i.blog_discription }}...</p>
+                  </a>
+                  <a class="btn btn-dark btn-theme-colored btn-xs btn-flat mt-0" href="{% url 'blog_tutorials' i.id %}">Read more</a>
+                  <div class="clearfix"></div>
+                </div>
+              </article>
+            </div>
+          {% endfor %}
+
+          </div>
+
+          <div class="clearfix"></div>
+          <!-- Infinity Loadmore Button -->
+          <div id="load-next-posts" class="p-15 pt-0 pb-0">
+            <a href="blog-extra-infinity-scroll-data-2.html" class="btn btn-default btn-lg btn-block">Load more...</a>
+          </div>
+
+
+          <!-- Infinity Loadmore Script -->
+          <script>
+            $(window).load(function(){
+              $('#load-next-posts a').appear();
+              $(document.body).on('appear', '#load-next-posts a', function() {
+                var $infinityload_container = $('#blog-posts-wrapper');
+                $infinityload_container.infinitescroll({
+                  //debug         : true,
+                  loading: {
+                    finishedMsg: '<i class="fa fa-check"></i>',
+                    msgText: '<i class="fa fa-spinner fa-spin"></i>',
+                    img: "images/preloaders/1.gif",
+                    speed: 'normal'
+                  },
+                  state: {
+                    isDone: false
+                  },
+                  nextSelector: "#load-next-posts a",
+                  navSelector: "#load-next-posts",
+                  itemSelector  : "#blog-posts-wrapper > .col-sm-6",
+                  //behavior: 'twitter'
+                },
+                function( newElements ) {
+                  $infinityload_container.find('#infscr-loading').remove();
+                });
+              });
+            });
+          </script>
+
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- end main-content -->
+
+
+{% endblock registration %}
+

@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Fractal by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'profile/css/main.css' %}" />
+		<noscript><link rel="stylesheet" href="{% static 'profile/css/noscript.css' %}"/></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="content">
+					<h1 style="text-transform: uppercase;"><a href="#">{{ data.Name }}</a></h1>
+					<p>{{ data.Designation }}<br />{{ data.Mobile }}<br>{{ data.Email }}<br></p>
+					<ul class="actions">
+						<li><a href="{% url 'home' %}" class="button icon solid fa-chevron-down scrolly">Back to Home </a></li>
+					</ul>
+				</div>
+				<div class="image phone"><div class="inner">
+					{% if data.Photo %}
+						<img src="{{ data.Photo.url }}" alt="" />
+					{% endif %}
+				</div>
+				</div>
+			</header>
+
+	</body>
+
+
+
+
+		<!-- Scripts -->
+			<script src="{% static 'profile/js/jquery.min.js' %}"></script>
+			<script src="{% static 'profile/js/jquery.scrolly.min.js' %}"></script>
+			<script src="{% static 'profile/js/browser.min.js' %}"></script>
+			<script src="{% static 'profile/js/breakpoints.min.js' %}"></script>
+			<script src="{% static 'profile/js/util.js' %}"></script>
+			<script src="{% static 'profile/js/main.js' %}"></script>
+
+	</body>
+</html>

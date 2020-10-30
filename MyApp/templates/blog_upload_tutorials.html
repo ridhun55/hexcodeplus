@@ -1,0 +1,832 @@
+{% extends "admin_base.html" %}
+
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+.inputstl {
+    padding: 9px;
+    border: solid 1px #460023;
+    outline: 0;
+    background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #FFCEE7), to(#FFFFFF));
+    background: -moz-linear-gradient(top, #FFFFFF, #FFCEE7 1px, #FFFFFF 25px);
+    box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+    -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+    -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+}
+
+
+
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btn {
+border: 1px solid #460023;
+color: #494949;
+background-color: white;
+padding: 8px 17px;
+border-radius: 9px;
+font-size: 14px;
+font-weight: bold;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+<!--===================================-->
+  .rectangle-list a{
+    position: relative;
+    display: block;
+    padding: .4em .4em .4em .8em;
+    *padding: .4em;
+    margin: .5em 0 .5em 2.5em;
+    background: #ddd;
+    color: #444;
+    text-decoration: none;
+    transition: all .3s ease-out;
+  }
+
+  .rectangle-list a:hover{
+    background: #eee;
+  }
+
+  .rectangle-list a:before{
+    content: counter(li);
+    counter-increment: li;
+    position: absolute;
+    left: -2.5em;
+    top: 50%;
+    margin-top: -1em;
+    background: #fa8072;
+    height: 2em;
+    width: 2em;
+    line-height: 2em;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .rectangle-list a:after{
+    position: absolute;
+    content: '';
+    border: .5em solid transparent;
+    left: -1em;
+    top: 50%;
+    margin-top: -.5em;
+    transition: all .3s ease-out;
+  }
+
+  .rectangle-list a:hover:after{
+    left: -.5em;
+    border-left-color: #fa8072;
+  }
+
+
+</style>
+<style>
+.div_demo {
+  background: #4C9B79;
+  height: 220px;
+  width:90%;
+  border-radius: 15px;
+}
+</style>
+
+<div class="container">
+
+<form method="post" class="form-horizontal" enctype="multipart/form-data" role="form">
+    {% csrf_token %}
+
+    <div class="form-group">
+        <label for="name1" class="col-sm-2 control-label">Blog Heading <sub><span style="color:red;font-size:18px"> *</span></sub></label>
+        <div class="col-sm-4">
+            <input type="text" name="blog_heading" class="form-control inputstl" id="name1" placeholder="Enter Main Heading">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="name2" class="col-sm-2 control-label">Blog Discription <sub><span style="color:red;font-size:18px"> *</span></sub></label>
+        <div class="col-sm-4">
+            <input type="text" name="blog_discription" class="form-control inputstl" id="name2" maxlength="100" placeholder="Enter Discription [ maximum-100 characters ]">
+        </div>
+    </div>
+<br>
+
+
+
+<!--    Jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#h1").click(function(){
+    $("#block1").toggle();
+  });
+});
+
+$(document).ready(function(){
+  $("#h2").click(function(){
+    $("#block2").toggle();
+  });
+});
+
+$(document).ready(function(){
+  $("#h3").click(function(){
+    $("#block3").toggle();
+  });
+});
+
+$(document).ready(function(){
+  $("#h4").click(function(){
+    $("#block4").toggle();
+  });
+});
+
+$(document).ready(function(){
+  $("#h5").click(function(){
+    $("#block5").toggle();
+  });
+});
+</script>
+
+
+<!--    Jquery -->
+
+<style>
+    #h1,#h2,#h3,#h4,#h5{
+    line-height: 30px;
+    margin: auto;
+    padding: 5px;
+    text-align: left;
+    background: #555;
+    border: solid 1px #666;
+    color: #ffffff;
+    border-radius: 3px;
+    user-select: none;
+    }
+    #block1{background: #c9c5df;}
+    #block2{background: #dfc5c5;}
+    #block3{background: #cce1e1;}
+    #block4{background: #c1e8a6;}
+    #block5{background: #1e20204a;}
+</style>
+
+
+<!--block 1-->
+<h1 id="h1">Block 1</h1>
+    <div id="block1">
+    <br>
+    <br>
+
+    <div class="form-group">
+        <label for="t1" class="col-sm-2 control-label">Sub Title 1 </label>
+        <div class="col-sm-4">
+            <input type="text" name="sub_title_1" class="form-control inputstl" id="t1" placeholder="Sub Title 1">
+        </div>
+    </div>
+    <div class="form-group">
+        <label  class="col-sm-2 control-label ">Image 1 <sub><span style="color:red;font-size:18px"> *</span></sub> </label>
+        <div class="col-sm-4 upload-btn-wrapper">
+            <button class="btn">Upload Image 1</button><label style="color:red;font-size:12px;"> &nbsp;&nbsp;Don't use empty image here </label>
+            <input type="file" name="img1"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c1" class="col-sm-2 control-label">Content 1 </label>
+        <div class="col-sm-5">
+            <textarea name="content_1" id="c1" class="form-control inputstl" rows="5"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="P1" class="col-sm-2 control-label">Bullet points 1 </label>
+        <div class="col-sm-5">
+            <div class="col-sm-1" align="center">
+                <label for="P1" class="col-sm-2 control-label">P1</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p1" id="P1" class="form-control inputstl" rows="5" placeholder="Point 1">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P2" class="col-sm-2 control-label">P2</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p2" id="P2" class="form-control inputstl" rows="5" placeholder="Point 2">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P3" class="col-sm-2 control-label">P3</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p3" id="P3" class="form-control inputstl" rows="5" placeholder="Point 3">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P4" class="col-sm-2 control-label">P4</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p4" id="P4" class="form-control inputstl" rows="5" placeholder="Point 4">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P5" class="col-sm-2 control-label">P5</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p5" id="P5" class="form-control inputstl" rows="5" placeholder="Point 5">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P6" class="col-sm-2 control-label">P6</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p6" id="P6" class="form-control inputstl" rows="5" placeholder="Point 6">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P7" class="col-sm-2 control-label">P7</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p7" id="P7" class="form-control inputstl" rows="5" placeholder="Point 7">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P8" class="col-sm-2 control-label">P8</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p8" id="P8" class="form-control inputstl" rows="5" placeholder="Point 8">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P9" class="col-sm-2 control-label">P9</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p9" id="P9" class="form-control inputstl" rows="5" placeholder="Point 9">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P10" class="col-sm-2 control-label">P10</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p10" id="P10" class="form-control inputstl" rows="5" placeholder="Point 10">
+            </div>
+            <br>
+            <br>
+
+
+        </div>
+    </div>
+</div><br>
+<!--block 1-->
+
+<!--block 2-->
+<h1 id="h2">Block 2</h1>
+    <div id="block2">
+    <br>
+    <br>
+
+    <div class="form-group">
+        <label for="name1" class="col-sm-2 control-label">Sub Title 2 </label>
+        <div class="col-sm-4">
+            <input type="text" name="sub_title_2" class="form-control inputstl" id="name1" placeholder="Sub Title 1">
+        </div>
+    </div>
+    <div class="form-group">
+        <label  class="col-sm-2 control-label ">Image 2 <sub><span style="color:red;font-size:18px"> *</span></sub> </label>
+        <div class="col-sm-4 upload-btn-wrapper">
+            <button class="btn">Upload Image 2</button>
+            <input type="file" name="img2" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="message" class="col-sm-2 control-label">Content 2 </label>
+        <div class="col-sm-5">
+            <textarea id="message" name="content_2" class="form-control inputstl" rows="5"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="P1" class="col-sm-2 control-label">Bullet points 2 </label>
+        <div class="col-sm-5">
+            <div class="col-sm-1" align="center">
+                <label for="P1" class="col-sm-2 control-label">P1</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p11" id="P1" class="form-control inputstl" rows="5" placeholder="Point 1">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P2" class="col-sm-2 control-label">P2</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p12" id="P2" class="form-control inputstl" rows="5" placeholder="Point 2">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P3" class="col-sm-2 control-label">P3</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p13" id="P3" class="form-control inputstl" rows="5" placeholder="Point 3">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P4" class="col-sm-2 control-label">P4</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p14" id="P4" class="form-control inputstl" rows="5" placeholder="Point 4">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P5" class="col-sm-2 control-label">P5</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p15" id="P5" class="form-control inputstl" rows="5" placeholder="Point 5">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P6" class="col-sm-2 control-label">P6</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p16" id="P6" class="form-control inputstl" rows="5" placeholder="Point 6">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P7" class="col-sm-2 control-label">P7</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p17" id="P7" class="form-control inputstl" rows="5" placeholder="Point 7">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P8" class="col-sm-2 control-label">P8</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p18" id="P8" class="form-control inputstl" rows="5" placeholder="Point 8">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P9" class="col-sm-2 control-label">P9</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p19" id="P9" class="form-control inputstl" rows="5" placeholder="Point 9">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P10" class="col-sm-2 control-label">P10</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p20" id="P20" class="form-control inputstl" rows="5" placeholder="Point 10">
+            </div>
+            <br>
+            <br>
+
+
+        </div>
+    </div>
+</div><br>
+<!--block 2-->
+
+<!--block 3-->
+<h1 id="h3">Block 3</h1>
+<div id="block3">
+    <br>
+    <br>
+    <div class="form-group">
+        <label for="name3" class="col-sm-2 control-label">Sub Title 3 </label>
+        <div class="col-sm-4">
+            <input type="text" name="sub_title_3" class="form-control inputstl" id="name3" placeholder="Sub Title 3">
+        </div>
+    </div>
+    <div class="form-group">
+        <label  class="col-sm-2 control-label ">Image 3 <sub><span style="color:red;font-size:18px"> *</span></sub> </label>
+        <div class="col-sm-4 upload-btn-wrapper">
+            <button class="btn">Upload Image 3</button>
+            <input type="file" name="img3" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="message3" class="col-sm-2 control-label">Content 3 </label>
+        <div class="col-sm-5">
+            <textarea id="message3" name="content_3" class="form-control inputstl" rows="5"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="P1" class="col-sm-2 control-label">Bullet points 3 </label>
+        <div class="col-sm-5">
+            <div class="col-sm-1" align="center">
+                <label for="P21" class="col-sm-2 control-label">P1</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p21" id="P21" class="form-control inputstl" rows="5" placeholder="Point 1">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P22" class="col-sm-2 control-label">P2</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p22" id="P22" class="form-control inputstl" rows="5" placeholder="Point 2">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P23" class="col-sm-2 control-label">P3</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p23" id="P23" class="form-control inputstl" rows="5" placeholder="Point 3">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P24" class="col-sm-2 control-label">P4</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p24" id="P24" class="form-control inputstl" rows="5" placeholder="Point 4">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P25" class="col-sm-2 control-label">P5</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p25" id="P25" class="form-control inputstl" rows="5" placeholder="Point 5">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P26" class="col-sm-2 control-label">P6</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p26" id="P26" class="form-control inputstl" rows="5" placeholder="Point 6">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P27" class="col-sm-2 control-label">P7</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p27" id="P27" class="form-control inputstl" rows="5" placeholder="Point 7">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P28" class="col-sm-2 control-label">P8</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p28" id="P28" class="form-control inputstl" rows="5" placeholder="Point 8">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P29" class="col-sm-2 control-label">P9</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p29" id="P29" class="form-control inputstl" rows="5" placeholder="Point 9">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P30" class="col-sm-2 control-label">P10</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p30" id="P30" class="form-control inputstl" rows="5" placeholder="Point 10">
+            </div>
+            <br>
+            <br>
+
+
+        </div>
+    </div>
+</div><br>
+<!--block 3-->
+
+<!--block 4-->
+<h1 id="h4">Block 4</h1>
+<div id="block4">
+    <br>
+    <br>
+    <div class="form-group">
+        <label for="name3" class="col-sm-2 control-label">Sub Title 4 </label>
+        <div class="col-sm-4">
+            <input type="text" name="sub_title_4" class="form-control inputstl" id="name3" placeholder="Sub Title 4">
+        </div>
+    </div>
+    <div class="form-group">
+        <label  class="col-sm-2 control-label ">Image 4 <sub><span style="color:red;font-size:18px"> *</span></sub> </label>
+        <div class="col-sm-4 upload-btn-wrapper">
+            <button class="btn">Upload Image 4</button>
+            <input type="file" name="img4" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="message3" class="col-sm-2 control-label">Content 4 </label>
+        <div class="col-sm-5">
+            <textarea id="message3" name="content_4" class="form-control inputstl" rows="5"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="P1" class="col-sm-2 control-label">Bullet points 4 </label>
+        <div class="col-sm-5">
+            <div class="col-sm-1" align="center">
+                <label for="P21" class="col-sm-2 control-label">P1</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p31" id="P21" class="form-control inputstl" rows="5" placeholder="Point 1">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P22" class="col-sm-2 control-label">P2</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p32" id="P22" class="form-control inputstl" rows="5" placeholder="Point 2">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P23" class="col-sm-2 control-label">P3</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p33" id="P23" class="form-control inputstl" rows="5" placeholder="Point 3">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P24" class="col-sm-2 control-label">P4</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p34" id="P24" class="form-control inputstl" rows="5" placeholder="Point 4">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P25" class="col-sm-2 control-label">P5</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p35" id="P25" class="form-control inputstl" rows="5" placeholder="Point 5">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P26" class="col-sm-2 control-label">P6</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p36" id="P26" class="form-control inputstl" rows="5" placeholder="Point 6">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P27" class="col-sm-2 control-label">P7</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p37" id="P27" class="form-control inputstl" rows="5" placeholder="Point 7">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P28" class="col-sm-2 control-label">P8</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p38" id="P28" class="form-control inputstl" rows="5" placeholder="Point 8">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P29" class="col-sm-2 control-label">P9</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p39" id="P29" class="form-control inputstl" rows="5" placeholder="Point 9">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P30" class="col-sm-2 control-label">P10</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p40" id="P30" class="form-control inputstl" rows="5" placeholder="Point 10">
+            </div>
+            <br>
+            <br>
+
+
+        </div>
+    </div>
+</div><br>
+<!--block 4-->
+
+<!--block 5-->
+<h1 id="h5">Block 5</h1>
+<div id="block5">
+    <br>
+    <br>
+    <div class="form-group">
+        <label for="name3" class="col-sm-2 control-label">Sub Title 4 </label>
+        <div class="col-sm-4">
+            <input type="text" name="sub_title_5" class="form-control inputstl" id="name3" placeholder="Sub Title 5">
+        </div>
+    </div>
+    <div class="form-group">
+        <label  class="col-sm-2 control-label ">Image 4 <sub><span style="color:red;font-size:18px"> *</span></sub> </label>
+        <div class="col-sm-4 upload-btn-wrapper">
+            <button class="btn">Upload Image 4</button>
+            <input type="file" name="img5" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="message3" class="col-sm-2 control-label">Content 5 </label>
+        <div class="col-sm-5">
+            <textarea id="message3" name="content_5" class="form-control inputstl" rows="5"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="P1" class="col-sm-2 control-label">Bullet points 5 </label>
+        <div class="col-sm-5">
+            <div class="col-sm-1" align="center">
+                <label for="P21" class="col-sm-2 control-label">P1</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p41" id="P21" class="form-control inputstl" rows="5" placeholder="Point 1">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P22" class="col-sm-2 control-label">P2</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p42" id="P22" class="form-control inputstl" rows="5" placeholder="Point 2">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P23" class="col-sm-2 control-label">P3</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p43" id="P23" class="form-control inputstl" rows="5" placeholder="Point 3">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P24" class="col-sm-2 control-label">P4</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p44" id="P24" class="form-control inputstl" rows="5" placeholder="Point 4">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P25" class="col-sm-2 control-label">P5</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p45" id="P25" class="form-control inputstl" rows="5" placeholder="Point 5">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P26" class="col-sm-2 control-label">P6</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p46" id="P26" class="form-control inputstl" rows="5" placeholder="Point 6">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P27" class="col-sm-2 control-label">P7</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p47" id="P27" class="form-control inputstl" rows="5" placeholder="Point 7">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P28" class="col-sm-2 control-label">P8</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p48" id="P28" class="form-control inputstl" rows="5" placeholder="Point 8">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P29" class="col-sm-2 control-label">P9</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p49" id="P29" class="form-control inputstl" rows="5" placeholder="Point 9">
+            </div>
+            <br>
+            <br>
+            <div class="col-sm-1" align="center">
+                <label for="P30" class="col-sm-2 control-label">P10</label>
+            </div>
+            <div class="col-sm-11">
+                <input type="text" name="p50" id="P30" class="form-control inputstl" rows="5" placeholder="Point 10">
+            </div>
+            <br>
+            <br>
+
+        </div>
+    </div>
+</div>
+<!--block 5-->
+
+
+<br><br>
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-4">
+        <button type="submit" class="btn btn-lg btn-block btn-danger">Submit Blog</button>
+    </div>
+</div>
+</form>
+</div>
+
+<br>
+    <br>
+    <div style="border:3px; border-style:solid; border-color:#FF0000; padding: 1em 1em 1em 1em;">
+    <h2>Materials Required</h2><br>
+    <h4>Blog Image Example [Size]</h4>
+    <a href="{% static 'images/Photo_Example/Blog_Image.jpg' %}" download="Blog_Image.jpg">
+        <img src="{% static 'images/Photo_Example/Blog_Image.jpg' %}" alt="Example Image Download here">
+        <button>Example Image Download here</button>
+    </a>
+        <br><br>
+        <h4>Empty Image [null image]</h4>
+    <a href="{% static 'images/Photo_Example/empty.jpg' %}" download="empty.jpg">
+        <img src="{% static 'images/Photo_Example/empty.jpg' %}" alt="Empty Image Download here">
+        <button>Empty Image Download here</button>
+    </a>
+    </div>
+
+    <br>
+    <br>
+
+
+<style>
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+<caption> <h2>{{admin_title}} Details</h2> </caption>
+<table id="customers">
+  <tr>
+    <th> ID </th>
+    <th> Blog Heading </th>
+    <th> Blog Date </th>
+    <th> Discription </th>
+    <th> Delete Blog </th>
+  </tr>
+   {% for i in data %}
+    <tr>
+    <td>{{ i.id }}</td>
+    <td>{{ i.blog_heading }}</td>
+    <td>{{ i.blog_date}}</td>
+    <td>{{ i.blog_discription}}</td>
+    <td><a href="{% url 'blog_tutorials_delete' i.id %}"> Delete - {{ i.blog_heading }}</span> </a> </td>
+  </tr>
+    {% endfor %}
+</table>
+
+
+{% endblock content %}
+
